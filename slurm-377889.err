@@ -1,0 +1,23 @@
+/home/jiaweizhang/miniconda3/lib/python3.12/site-packages/conda/base/context.py:201: FutureWarning: Adding 'defaults' to channel list implicitly is deprecated and will be removed in 25.3. 
+
+To remove this warning, please choose a default channel explicitly with conda's regular configuration system, e.g. by adding 'defaults' to the list of channels:
+
+  conda config --add channels defaults
+
+For more information see https://docs.conda.io/projects/conda/en/stable/user-guide/configuration/use-condarc.html
+
+  deprecated.topic(
++ export HF_DATASETS_OFFLINE=1
++ HF_DATASETS_OFFLINE=1
++ export TRANSFORMERS_OFFLINE=1
++ TRANSFORMERS_OFFLINE=1
++ ZERO_STAGE=2
++ DATA_PATH=./datasets/Dahoas/full-hh-rlhf
++ MODEL_NAME=facebook/opt-1.3b
++ LOG_PATH=log
++ SEED=1234
+++ date +%Y-%m-%d-%H-%M-%S
++ TIME_STEP=2025-02-25-12-46-58
++ OUTPUT=log/step1_sft-facebook_opt-1.3b-full_hh_rlhf-2025-02-25-12-46-58-1234
++ mkdir -p log/step1_sft-facebook_opt-1.3b-full_hh_rlhf-2025-02-25-12-46-58-1234
++ deepspeed --master_port 12345 step1_supervised_finetuning/main.py --data_path ./datasets/Dahoas/full-hh-rlhf --data_output_path ./tmp/data_files/rlhf_consistency/opt --data_split 2,4,4 --model_name_or_path facebook/opt-1.3b --per_device_train_batch_size 30 --per_device_eval_batch_size 30 --max_seq_len 512 --learning_rate 1e-5 --weight_decay 0. --num_train_epochs 2 --gradient_accumulation_steps 1 --lr_scheduler_type cosine --num_warmup_steps 0 --seed 1234 --zero_stage 2 --deepspeed --dtype bf16 --gradient_checkpointing --output_dir log/step1_sft-facebook_opt-1.3b-full_hh_rlhf-2025-02-25-12-46-58-1234 --enable_tensorboard --print_loss

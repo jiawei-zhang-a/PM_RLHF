@@ -1,0 +1,35 @@
+[2025-02-25 12:30:28,430] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/jiaweizhang/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[2025-02-25 12:30:50,477] [WARNING] [runner.py:215:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+Detected VISIBLE_DEVICES=0 but ignoring it because one or several of --include/--exclude/--num_gpus/--num_nodes cl args were used. If you want to use CUDA_VISIBLE_DEVICES don't pass any of these arguments to deepspeed.
+[2025-02-25 12:30:50,477] [INFO] [runner.py:607:main] cmd = /usr/bin/python3 -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMF19 --master_addr=127.0.0.1 --master_port=29500 --enable_each_rank_log=None main.py --model_name_or_path facebook/opt-1.3b --gradient_accumulation_steps 8 --lora_dim 128 --zero_stage 0 --enable_tensorboard --tensorboard_path ./output --deepspeed --output_dir ./output
+[2025-02-25 12:30:52,843] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/jiaweizhang/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[2025-02-25 12:30:54,133] [INFO] [launch.py:146:main] WORLD INFO DICT: {'localhost': [0]}
+[2025-02-25 12:30:54,133] [INFO] [launch.py:152:main] nnodes=1, num_local_procs=1, node_rank=0
+[2025-02-25 12:30:54,133] [INFO] [launch.py:163:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0]})
+[2025-02-25 12:30:54,133] [INFO] [launch.py:164:main] dist_world_size=1
+[2025-02-25 12:30:54,133] [INFO] [launch.py:168:main] Setting CUDA_VISIBLE_DEVICES=0
+[2025-02-25 12:30:54,134] [INFO] [launch.py:256:main] process 3917658 spawned with command: ['/usr/bin/python3', '-u', 'main.py', '--local_rank=0', '--model_name_or_path', 'facebook/opt-1.3b', '--gradient_accumulation_steps', '8', '--lora_dim', '128', '--zero_stage', '0', '--enable_tensorboard', '--tensorboard_path', './output', '--deepspeed', '--output_dir', './output']
+[2025-02-25 12:30:56,710] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/jiaweizhang/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+/home/jiaweizhang/.local/lib/python3.10/site-packages/transformers/deepspeed.py:23: FutureWarning: transformers.deepspeed module is deprecated and will be removed in a future version. Please import deepspeed modules directly from transformers.integrations
+  warnings.warn(
+[2025-02-25 12:31:10,255] [INFO] [comm.py:658:init_distributed] cdb=None
+[2025-02-25 12:31:10,255] [INFO] [comm.py:689:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+Traceback (most recent call last):
+  File "/home/jiaweizhang/PM_RLHF/step1_supervised_finetuning/main.py", line 510, in <module>
+    main()
+  File "/home/jiaweizhang/PM_RLHF/step1_supervised_finetuning/main.py", line 336, in main
+    save_code(args.output_dir)
+  File "/home/jiaweizhang/PM_RLHF/dschat/utils/io_utils.py", line 15, in save_code
+    shutil.copytree(
+  File "/usr/lib/python3.10/shutil.py", line 559, in copytree
+    return _copytree(entries=entries, src=src, dst=dst, symlinks=symlinks,
+  File "/usr/lib/python3.10/shutil.py", line 457, in _copytree
+    os.makedirs(dst, exist_ok=dirs_exist_ok)
+  File "/usr/lib/python3.10/os.py", line 225, in makedirs
+    mkdir(name, mode)
+FileExistsError: [Errno 17] File exists: './output/code'
+[2025-02-25 12:31:17,157] [INFO] [launch.py:319:sigkill_handler] Killing subprocess 3917658
+[2025-02-25 12:31:17,157] [ERROR] [launch.py:325:sigkill_handler] ['/usr/bin/python3', '-u', 'main.py', '--local_rank=0', '--model_name_or_path', 'facebook/opt-1.3b', '--gradient_accumulation_steps', '8', '--lora_dim', '128', '--zero_stage', '0', '--enable_tensorboard', '--tensorboard_path', './output', '--deepspeed', '--output_dir', './output'] exits with return code = 1

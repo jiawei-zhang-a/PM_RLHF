@@ -7,8 +7,8 @@
 
 ACTOR_ZERO_STAGE="--actor_zero_stage 0"
 CRITIC_ZERO_STAGE="--critic_zero_stage 0"
-ACTOR_MODEL_PATH= # Provide the ckpt path of the actor model
-CRITIC_MODEL_PATH= # Provide the ckpt path of the critic model
+ACTOR_MODEL_PATH= /net/scratch/jiaweizhang/
+CRITIC_MODEL_PATH= /net/scratch/jiaweizhang/
 
 OUTPUT="./output"
 

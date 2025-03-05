@@ -1,0 +1,47 @@
+[2025-02-25 12:47:04,530] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/jiaweizhang/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[2025-02-25 12:47:07,166] [WARNING] [runner.py:215:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+Detected VISIBLE_DEVICES=0: setting --include=localhost:0
+[2025-02-25 12:47:07,167] [INFO] [runner.py:607:main] cmd = /usr/bin/python3 -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMF19 --master_addr=127.0.0.1 --master_port=12345 --enable_each_rank_log=None step1_supervised_finetuning/main.py --data_path ./datasets/Dahoas/full-hh-rlhf --data_output_path ./tmp/data_files/rlhf_consistency/opt --data_split 2,4,4 --model_name_or_path facebook/opt-1.3b --per_device_train_batch_size 30 --per_device_eval_batch_size 30 --max_seq_len 512 --learning_rate 1e-5 --weight_decay 0. --num_train_epochs 2 --gradient_accumulation_steps 1 --lr_scheduler_type cosine --num_warmup_steps 0 --seed 1234 --zero_stage 2 --deepspeed --dtype bf16 --gradient_checkpointing --output_dir log/step1_sft-facebook_opt-1.3b-full_hh_rlhf-2025-02-25-12-46-58-1234 --enable_tensorboard --print_loss
+[2025-02-25 12:47:09,261] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/jiaweizhang/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[2025-02-25 12:47:10,240] [INFO] [launch.py:146:main] WORLD INFO DICT: {'localhost': [0]}
+[2025-02-25 12:47:10,240] [INFO] [launch.py:152:main] nnodes=1, num_local_procs=1, node_rank=0
+[2025-02-25 12:47:10,240] [INFO] [launch.py:163:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0]})
+[2025-02-25 12:47:10,241] [INFO] [launch.py:164:main] dist_world_size=1
+[2025-02-25 12:47:10,241] [INFO] [launch.py:168:main] Setting CUDA_VISIBLE_DEVICES=0
+[2025-02-25 12:47:10,242] [INFO] [launch.py:256:main] process 2767350 spawned with command: ['/usr/bin/python3', '-u', 'step1_supervised_finetuning/main.py', '--local_rank=0', '--data_path', './datasets/Dahoas/full-hh-rlhf', '--data_output_path', './tmp/data_files/rlhf_consistency/opt', '--data_split', '2,4,4', '--model_name_or_path', 'facebook/opt-1.3b', '--per_device_train_batch_size', '30', '--per_device_eval_batch_size', '30', '--max_seq_len', '512', '--learning_rate', '1e-5', '--weight_decay', '0.', '--num_train_epochs', '2', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--num_warmup_steps', '0', '--seed', '1234', '--zero_stage', '2', '--deepspeed', '--dtype', 'bf16', '--gradient_checkpointing', '--output_dir', 'log/step1_sft-facebook_opt-1.3b-full_hh_rlhf-2025-02-25-12-46-58-1234', '--enable_tensorboard', '--print_loss']
+[2025-02-25 12:47:12,238] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/jiaweizhang/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+/home/jiaweizhang/.local/lib/python3.10/site-packages/transformers/deepspeed.py:23: FutureWarning: transformers.deepspeed module is deprecated and will be removed in a future version. Please import deepspeed modules directly from transformers.integrations
+  warnings.warn(
+[2025-02-25 12:47:16,156] [INFO] [comm.py:658:init_distributed] cdb=None
+[2025-02-25 12:47:16,156] [INFO] [comm.py:689:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+/home/jiaweizhang/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:795: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+BOS token: </s> EOS token: </s> PAD token: <pad>
+Creating prompt dataset ['./datasets/Dahoas/full-hh-rlhf'], reload=False
+Traceback (most recent call last):
+  File "/home/jiaweizhang/PM_RLHF/step1_supervised_finetuning/main.py", line 510, in <module>
+    main()
+  File "/home/jiaweizhang/PM_RLHF/step1_supervised_finetuning/main.py", line 377, in main
+    train_dataset, eval_dataset = create_prompt_dataset(
+  File "/home/jiaweizhang/PM_RLHF/dschat/utils/data/data_utils.py", line 414, in create_prompt_dataset
+    train_dataset, eval_dataset = create_dataset(
+  File "/home/jiaweizhang/PM_RLHF/dschat/utils/data/data_utils.py", line 330, in create_dataset
+    raw_dataset = get_raw_dataset(dataset_name, output_path, seed, local_rank)
+  File "/home/jiaweizhang/PM_RLHF/dschat/utils/data/data_utils.py", line 30, in get_raw_dataset
+    return raw_datasets.DahoasFullhhrlhfDataset(
+  File "/home/jiaweizhang/PM_RLHF/dschat/utils/data/raw_datasets.py", line 86, in __init__
+    super().__init__(output_path, seed, local_rank, dataset_name)
+  File "/home/jiaweizhang/PM_RLHF/dschat/utils/data/raw_datasets.py", line 20, in __init__
+    self.raw_datasets = load_dataset(dataset_name)
+  File "/home/jiaweizhang/.local/lib/python3.10/site-packages/datasets/load.py", line 2129, in load_dataset
+    builder_instance = load_dataset_builder(
+  File "/home/jiaweizhang/.local/lib/python3.10/site-packages/datasets/load.py", line 1849, in load_dataset_builder
+    dataset_module = dataset_module_factory(
+  File "/home/jiaweizhang/.local/lib/python3.10/site-packages/datasets/load.py", line 1737, in dataset_module_factory
+    raise FileNotFoundError(f"Couldn't find any data file at {relative_to_absolute_path(path)}.")
+FileNotFoundError: Couldn't find any data file at /home/jiaweizhang/PM_RLHF/datasets/Dahoas/full-hh-rlhf.
+[2025-02-25 12:47:59,292] [INFO] [launch.py:319:sigkill_handler] Killing subprocess 2767350
+[2025-02-25 12:47:59,292] [ERROR] [launch.py:325:sigkill_handler] ['/usr/bin/python3', '-u', 'step1_supervised_finetuning/main.py', '--local_rank=0', '--data_path', './datasets/Dahoas/full-hh-rlhf', '--data_output_path', './tmp/data_files/rlhf_consistency/opt', '--data_split', '2,4,4', '--model_name_or_path', 'facebook/opt-1.3b', '--per_device_train_batch_size', '30', '--per_device_eval_batch_size', '30', '--max_seq_len', '512', '--learning_rate', '1e-5', '--weight_decay', '0.', '--num_train_epochs', '2', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--num_warmup_steps', '0', '--seed', '1234', '--zero_stage', '2', '--deepspeed', '--dtype', 'bf16', '--gradient_checkpointing', '--output_dir', 'log/step1_sft-facebook_opt-1.3b-full_hh_rlhf-2025-02-25-12-46-58-1234', '--enable_tensorboard', '--print_loss'] exits with return code = 1
